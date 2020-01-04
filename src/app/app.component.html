@@ -1,0 +1,19 @@
+<mat-sidenav-container fxFlexFill>
+	<mat-sidenav mode="side" [opened]="navBarOpen">
+		<mat-nav-list>
+			<a *ngFor="let route of routes" mat-list-item [routerLink]="route.route">
+				<fpa-margin-icon [nameOfIcon]="route.icon"></fpa-margin-icon>{{route.title}}
+			</a>
+		</mat-nav-list>
+	</mat-sidenav>
+	<mat-sidenav-content fxLayout="column">
+		<fpa-toolbar (navToggle)="toggleNav()"></fpa-toolbar>
+		<div fxFlex>
+			<router-outlet></router-outlet>
+		</div>
+		<footer>
+      <hr>
+			<p style="text-align:center;">My text</p>
+		</footer>
+	</mat-sidenav-content>
+</mat-sidenav-container>
