@@ -27,7 +27,8 @@ export class AppComponent implements OnDestroy {
 
   constructor(media: MediaObserver) {
     this.watcher = media.asObservable().subscribe((change: MediaChange) => {
-      if (change.mqAlias == 'xs') {
+      console.log(change);
+      if (change.mqAlias === 'xs') {
         this.loadMobileView();
       }
       else {
@@ -36,21 +37,21 @@ export class AppComponent implements OnDestroy {
     });
   }
 
-  ngOnDestroy() {
-  this.watcher.unsubscribe();
-}
+  ngOnDestroy() { 
+    this.watcher.unsubscribe();
+  }
 
-loadMobileView() {
+  loadMobileView() {
+    console.log('mob');
+    this.navBarOpen = false;
+  }
 
-}
+  loadNormalView() {
+    console.log('nor');
+    this.navBarOpen = true;
+  }
 
-loadNormalView() {
-
-}
-
-toggleNav() {
-  this.navBarOpen = !this.navBarOpen;
-}
-
- 
+  toggleNav() {
+    this.navBarOpen = !this.navBarOpen;
+  }
 }
